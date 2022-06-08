@@ -11,7 +11,7 @@ def login(accout,password,wb):
 
 def get_information(wb):
     goods_key="奥特曼"   #---------------------------->改变搜索信息
-    time.sleep(10) 
+    time.sleep(6)
     wb.find_element_by_xpath('/html/body/header/article/nav/div/div/form/div[2]/div/div/div/div/input').send_keys(goods_key)
     wb.find_element_by_class_name('btn-search').click() 
 
@@ -22,7 +22,7 @@ def get_information(wb):
     #2.切换到新窗口：
     wb.switch_to.window(wb.window_handles[-1])  
     data={"商品名称":[],"商品图片":[],"商品价格":[],"商品成交量":[],"商品生产地":[],"店铺名称":[]}  
-    for i in range(2):   #设置爬取的页数
+    for i in range(4):   #----------------------------------------------------->设置爬取的页数
         com_list=wb.find_elements_by_xpath('//div[@class="items"]/div[@class="item J_MouserOnverReq  "]')
         print(len(com_list))
         for item in com_list:
@@ -70,8 +70,8 @@ if __name__=="__main__":
     wb.implicitly_wait(3)
 
     # 输入账号和密码
-    accout =""  # ----------------------------------------------->你的账号
-    password = ""   # ---------------------------------------------->你的密码
+    accout ="13599829312"  # ----------------------------------------------->你的账号
+    password = "575neng942"   # ---------------------------------------------->你的密码
     #登入
     login(accout,password,wb)
     #获取信息
